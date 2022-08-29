@@ -11,8 +11,8 @@ using Timberborn.WaterBuildings;
 using TimberbornAPI.Common;
 using TimberbornAPI.UIBuilderSystem;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UIElements;
-using static UnityEngine.UIElements.Length.Unit;
 
 namespace Hytone.Timberborn.Plugins.Floodgates.UI
 {
@@ -32,7 +32,7 @@ namespace Hytone.Timberborn.Plugins.Floodgates.UI
 
         //There has to be a better way for this...
         private List<Tuple<Label, Slider, Label, Slider, Label, Slider, Label, Tuple<Slider>>> _settingsList = new List<Tuple<Label, Slider, Label, Slider, Label, Slider, Label, Tuple<Slider>>>();
-        
+
         public AttachToStreamGaugeFragment(
             AttachToStreamGaugeButton attachToStreamGaugeButton,
             UIBuilder builder,
@@ -56,10 +56,10 @@ namespace Hytone.Timberborn.Plugins.Floodgates.UI
 
             var root = _builder.CreateComponentBuilder()
                                .CreateVisualElement()
-                               .SetName("LinksScrollView")
-                               .SetWidth(new Length(290, Pixel))
+            .SetName("LinksScrollView")
+                               .SetWidth(new Length(290, LengthUnit.Pixel))
                                .SetJustifyContent(Justify.Center)
-                               .SetMargin(new Margin(0, 0, new Length(7, Pixel), 0))
+                               .SetMargin(new Margin(0, 0, new Length(7, LengthUnit.Pixel), 0))
                                .BuildAndInitialize();
 
             _attachToStreamGaugeButton.Initialize(parent, () => _floodgateTriggerMonoBehaviour, delegate
@@ -74,8 +74,8 @@ namespace Hytone.Timberborn.Plugins.Floodgates.UI
                                .AddPreset(factory => factory.Labels()
                                                             .GameTextBig(name: "NoLinksLabel",
                                                                          locKey: "Floodgates.Triggers.NoLinks",
-                                                                         builder: builder => 
-                                                                            builder.SetStyle(style => 
+                                                                         builder: builder =>
+                                                                            builder.SetStyle(style =>
                                                                                 style.alignSelf = Align.Center)))
                                .BuildAndInitialize();
 
@@ -171,7 +171,7 @@ namespace Hytone.Timberborn.Plugins.Floodgates.UI
                 var threshold2FloodgateSlider = view.Q<Slider>($"Threshold2FloodgateHeightSlider{i}");
                 threshold2FloodgateSlider.RegisterValueChangedCallback((@event) => ChangeHeightSlider(@event, j, 1));
 
-                var foo =Tuple.Create(
+                var foo = Tuple.Create(
                     threshold1Label, threshold1Slider, threshold2Label, threshold2Slider, threshold1FloodgateLabel, threshold1FloodgateSlider, threshold2FloodgateLabel, threshold2FloodgateSlider);
 
                 _settingsList.Add(foo);
@@ -179,7 +179,7 @@ namespace Hytone.Timberborn.Plugins.Floodgates.UI
             }
 
             _attachToStreamGaugeButton.UpdateRemainingSlots(links.Count, _floodgateTriggerMonoBehaviour.MaxStreamGaugeLinks);
-            if(links.IsEmpty())
+            if (links.IsEmpty())
             {
                 _linksScrollView.Add(_noLinks);
             }
@@ -191,8 +191,8 @@ namespace Hytone.Timberborn.Plugins.Floodgates.UI
         /// <param name="changeEvent"></param>
         /// <param name="index"></param>
         /// <param name="sliderIndex"></param>
-        public void ChangeThresholdSlider(ChangeEvent<float> changeEvent, 
-                                          int index, 
+        public void ChangeThresholdSlider(ChangeEvent<float> changeEvent,
+                                          int index,
                                           int sliderIndex)
         {
             Slider slider;
@@ -250,7 +250,7 @@ namespace Hytone.Timberborn.Plugins.Floodgates.UI
         {
             _linksScrollView.Clear();
         }
-        
+
         /// <summary>
         /// Makes the height slider work in increments of 0.5
         /// </summary>

@@ -1,4 +1,12 @@
-﻿namespace Hytone.Timberborn.Plugins.Floodgates.EntityAction
+﻿using Timberborn.EntitySystem;
+using Timberborn.Persistence;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Timberborn.WorldSerialization;
+using UnityEngine;
+
+namespace Hytone.Timberborn.Plugins.Floodgates.EntityAction
 {
     /// <summary>
     /// Represents a link between a Floodgate and a Streamgauge

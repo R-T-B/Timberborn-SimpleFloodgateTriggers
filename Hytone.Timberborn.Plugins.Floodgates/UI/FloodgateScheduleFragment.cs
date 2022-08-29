@@ -6,7 +6,6 @@ using TimberbornAPI.Common;
 using TimberbornAPI.UIBuilderSystem;
 using UnityEngine;
 using UnityEngine.UIElements;
-using static UnityEngine.UIElements.Length.Unit;
 
 namespace Hytone.Timberborn.Plugins.Floodgates.UI
 {
@@ -51,14 +50,14 @@ namespace Hytone.Timberborn.Plugins.Floodgates.UI
                                                                          fontStyle: FontStyle.Normal,
                                                                          color: new StyleColor(new Color(0.8f, 0.8f, 0.8f, 1f)),
                                                                          builder: builder => builder.SetStyle(style => style.alignSelf = Align.Center)
-                                                                                                    .SetMargin(new Margin(new Length(3, Pixel), 0, new Length(11, Pixel), 0))))
+                                                                                                    .SetMargin(new Margin(new Length(3, LengthUnit.Pixel), 0, new Length(11, LengthUnit.Pixel), 0))))
                         .AddPreset(factory => factory.Toggles()
                                                       .CheckmarkInverted(locKey: "Floodgate.Schedule.DisableOnDrought",
                                                                          name: nameof(FloodgateTriggerMonoBehaviour.DisableScheduleOnDrought) + "Toggle",
                                                                          fontStyle: FontStyle.Normal,
                                                                          color: new StyleColor(new Color(0.8f, 0.8f, 0.8f, 1f)),
                                                                          builder: builder => builder.SetStyle(style => style.alignSelf = Align.Center)
-                                                                                                    .SetMargin(new Margin(new Length(3, Pixel), 0, new Length(11, Pixel), 0))))
+                                                                                                    .SetMargin(new Margin(new Length(3, LengthUnit.Pixel), 0, new Length(11, LengthUnit.Pixel), 0))))
                         .AddPreset(factory => factory.Labels()
                                                      .GameTextBig(name: nameof(FloodgateTriggerMonoBehaviour.FirstScheduleTime) + "Label",
                                                                   text: "Time: ",
@@ -68,7 +67,7 @@ namespace Hytone.Timberborn.Plugins.Floodgates.UI
                                                                    23.5f,
                                                                    name: nameof(FloodgateTriggerMonoBehaviour.FirstScheduleTime) + "Slider",
                                                                    builder: sliderBuilder => sliderBuilder.SetStyle(style => style.flexGrow = 1f)
-                                                                                                          .SetPadding(new Padding(new Length(21, Pixel), 0))))
+                                                                                                          .SetPadding(new Padding(new Length(21, LengthUnit.Pixel), 0))))
                         .AddPreset(factory => factory.Labels()
                                                      .GameTextBig(name: nameof(FloodgateTriggerMonoBehaviour.FirstScheduleHeight) + "Label",
                                                                   text: "Height: ",
@@ -78,7 +77,7 @@ namespace Hytone.Timberborn.Plugins.Floodgates.UI
                                                                    1f,
                                                                    name: nameof(FloodgateTriggerMonoBehaviour.FirstScheduleHeight) + "Slider",
                                                                    builder: sliderBuilder => sliderBuilder.SetStyle(style => style.flexGrow = 1f)
-                                                                                                          .SetPadding(new Padding(new Length(21, Pixel), 0))))
+                                                                                                          .SetPadding(new Padding(new Length(21, LengthUnit.Pixel), 0))))
                         .AddPreset(factory => factory.Labels()
                                                      .GameTextBig(name: nameof(FloodgateTriggerMonoBehaviour.SecondScheduleTime) + "Label",
                                                                   text: "Time: ",
@@ -88,7 +87,7 @@ namespace Hytone.Timberborn.Plugins.Floodgates.UI
                                                                    23.5f,
                                                                    name: nameof(FloodgateTriggerMonoBehaviour.SecondScheduleTime) + "Slider",
                                                                    builder: sliderBuilder => sliderBuilder.SetStyle(style => style.flexGrow = 1f)
-                                                                                                          .SetPadding(new Padding(new Length(21, Pixel), 0))))
+                                                                                                          .SetPadding(new Padding(new Length(21, LengthUnit.Pixel), 0))))
                         .AddPreset(factory => factory.Labels()
                                                      .GameTextBig(name: nameof(FloodgateTriggerMonoBehaviour.SecondScheduleHeight) + "Label",
                                                                   text: "Height: ",
@@ -98,7 +97,7 @@ namespace Hytone.Timberborn.Plugins.Floodgates.UI
                                                                    1f,
                                                                    name: nameof(FloodgateTriggerMonoBehaviour.SecondScheduleHeight) + "Slider",
                                                                    builder: sliderBuilder => sliderBuilder.SetStyle(style => style.flexGrow = 1f)
-                                                                                                          .SetPadding(new Padding(new Length(21, Pixel), 0))));
+                                                                                                          .SetPadding(new Padding(new Length(21, LengthUnit.Pixel), 0))));
 
             _root = rootBuilder.BuildAndInitialize();
 

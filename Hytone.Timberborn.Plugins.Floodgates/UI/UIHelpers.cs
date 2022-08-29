@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Timberborn.WaterBuildings;
+﻿using Timberborn.WaterBuildings;
 
 namespace Hytone.Timberborn.Plugins.Floodgates.UI
 {

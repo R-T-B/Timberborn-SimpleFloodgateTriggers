@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using Hytone.Timberborn.Plugins.Floodgates.EntityAction;
 using TimberbornAPI.UIBuilderSystem;
-using static UnityEngine.UIElements.Length.Unit;
 using Timberborn.WaterBuildings;
 using TimberbornAPI.Common;
 
@@ -63,10 +62,10 @@ namespace Hytone.Timberborn.Plugins.Floodgates.UI
                                                             .SetName("BasicButton")
                                                             .SetLocKey("Floodgate.Triggers.Basic")
                                                             .SetColor(new StyleColor(new Color(0.8f, 0.8f, 0.8f, 1f)))
-                                                            .SetFontSize(new Length(14, Pixel))
+                                                            .SetFontSize(new Length(14, LengthUnit.Pixel))
                                                             .SetFontStyle(FontStyle.Normal)
-                                                            .SetHeight(new Length(29, Pixel))
-                                                            .SetWidth(new Length(145, Pixel))
+                                                            .SetHeight(new Length(29, LengthUnit.Pixel))
+                                                            .SetWidth(new Length(145, LengthUnit.Pixel))
                                                             .Build())
                                       .AddComponent(_builder.CreateComponentBuilder()
                                                             .CreateButton()
@@ -74,21 +73,21 @@ namespace Hytone.Timberborn.Plugins.Floodgates.UI
                                                             .SetName("AdvancedButton")
                                                             .SetLocKey("Floodgate.Triggers.Advanced")
                                                             .SetColor(new StyleColor(new Color(0.8f, 0.8f, 0.8f, 1f)))
-                                                            .SetFontSize(new Length(14, Pixel))
+                                                            .SetFontSize(new Length(14, LengthUnit.Pixel))
                                                             .SetFontStyle(FontStyle.Normal)
-                                                            .SetHeight(new Length(29, Pixel))
-                                                            .SetWidth(new Length(145, Pixel))
+                                                            .SetHeight(new Length(29, LengthUnit.Pixel))
+                                                            .SetWidth(new Length(145, LengthUnit.Pixel))
                                                             .Build())
                                       .AddComponent(_builder.CreateComponentBuilder()
                                                             .CreateVisualElement()
                                                             .SetName("BasicTab")
-                                                            .SetHeight(new Length(420, Pixel))
-                                                            .SetPadding(new Padding(new Length(8, Pixel)))
+                                                            .SetHeight(new Length(420, LengthUnit.Pixel))
+                                                            .SetPadding(new Padding(new Length(8, LengthUnit.Pixel)))
                                                             .Build())
                                       .AddComponent(_builder.CreateComponentBuilder()
                                                             .CreateVisualElement()
                                                             .SetName("AdvancedTab")
-                                                            .SetPadding(new Padding(new Length(8, Pixel), 0, 0, 0))
+                                                            .SetPadding(new Padding(new Length(8, LengthUnit.Pixel), 0, 0, 0))
                                                             .AddComponent(builder => builder.AddComponent(_builder.CreateComponentBuilder()
                                                                                                                   .CreateVisualElement()
                                                                                                                   .SetName("Placeholder")
@@ -99,10 +98,10 @@ namespace Hytone.Timberborn.Plugins.Floodgates.UI
                                                                                                                   .AddClass("entity-fragment__button--green")
                                                                                                                   .SetName("NewStreamGaugeButton")
                                                                                                                   .SetColor(new StyleColor(new Color(0.8f, 0.8f, 0.8f, 1f)))
-                                                                                                                  .SetFontSize(new Length(13, Pixel))
+                                                                                                                  .SetFontSize(new Length(13, LengthUnit.Pixel))
                                                                                                                   .SetFontStyle(FontStyle.Normal)
-                                                                                                                  .SetHeight(new Length(29, Pixel))
-                                                                                                                  .SetWidth(new Length(290, Pixel))
+                                                                                                                  .SetHeight(new Length(29, LengthUnit.Pixel))
+                                                                                                                  .SetWidth(new Length(290, LengthUnit.Pixel))
                                                                                                                   .Build()))
                                                             .BuildAndInitialize());
 

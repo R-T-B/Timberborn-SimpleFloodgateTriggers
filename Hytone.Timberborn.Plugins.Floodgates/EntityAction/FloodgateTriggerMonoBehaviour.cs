@@ -8,6 +8,7 @@ using Timberborn.Persistence;
 using Timberborn.WaterBuildings;
 using Timberborn.WeatherSystem;
 using UnityEngine;
+using Timberborn.WorldSerialization;
 
 namespace Hytone.Timberborn.Plugins.Floodgates.EntityAction
 {
@@ -15,7 +16,7 @@ namespace Hytone.Timberborn.Plugins.Floodgates.EntityAction
     /// This class handles the data related to Floodgate Triggers. It also holds the actions
     /// which are executed when certain events happen.
     /// </summary>
-    public class FloodgateTriggerMonoBehaviour : MonoBehaviour, IPersistentEntity, IFinishedStateListener
+    public class FloodgateTriggerMonoBehaviour : MonoBehaviour, IPersistentEntity, IFinishedStateListener, IObjectSerializer<StreamGaugeFloodgateLink>
     {
         //Keys used in data saving/loading
         private static readonly ComponentKey FloodgateTriggerKey = new ComponentKey(nameof(FloodgateTriggerMonoBehaviour));
@@ -35,6 +36,8 @@ namespace Hytone.Timberborn.Plugins.Floodgates.EntityAction
         private IScheduleTriggerFactory _scheduleTriggerFactory;
         private IScheduleTrigger _scheduleTrigger;
         private DroughtService _droughtServíce;
+
+        private StreamGaugeFloodgateLinkSerializer _objectSerializer;
 
         private readonly List<StreamGaugeFloodgateLink> _floodgateLinks = new List<StreamGaugeFloodgateLink>();
         public ReadOnlyCollection<StreamGaugeFloodgateLink> FloodgateLinks { get; private set; }
@@ -56,10 +59,11 @@ namespace Hytone.Timberborn.Plugins.Floodgates.EntityAction
         [Inject]
         public void InjectDependencies(
             IScheduleTriggerFactory scheduleTriggerFactory,
-            DroughtService droughtService)
+            DroughtService droughtService, StreamGaugeFloodgateLinkSerializer serializer)
         {
             _scheduleTriggerFactory = scheduleTriggerFactory;
             _droughtServíce = droughtService;
+            _objectSerializer = serializer;
         }
 
         public void Awake()
@@ -101,7 +105,7 @@ namespace Hytone.Timberborn.Plugins.Floodgates.EntityAction
             component.Set(SecondScheduleHeightKey, SecondScheduleHeight);
             component.Set(ScheduleEnabledKey, ScheduleEnabled);
             component.Set(DisableScheduleOnDroughtKey, DisableScheduleOnDrought);
-            component.Set(FloodgateLinksKey, FloodgateLinks);
+            component.Set(FloodgateLinksKey, FloodgateLinks, _objectSerializer);
         }
 
         /// <summary>
@@ -157,9 +161,9 @@ namespace Hytone.Timberborn.Plugins.Floodgates.EntityAction
             }
             if (component.Has(FloodgateLinksKey))
             {
-                _floodgateLinks.AddRange(component.Get(FloodgateLinksKey));
+                _floodgateLinks.AddRange(component.Get(FloodgateLinksKey, _objectSerializer));
 
-                foreach(var link in FloodgateLinks)
+                foreach (var link in FloodgateLinks)
                 {
                     PostAttachLink(link);
                 }
@@ -320,6 +324,16 @@ namespace Hytone.Timberborn.Plugins.Floodgates.EntityAction
         private void PostDetachLink(StreamGaugeFloodgateLink link)
         {
             link.StreamGauge.DetachFloodgate(link);
+        }
+
+        public void Serialize(StreamGaugeFloodgateLink value, IObjectSaver objectSaver)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Obsoletable<StreamGaugeFloodgateLink> Deserialize(IObjectLoader objectLoader)
+        {
+            throw new NotImplementedException();
         }
     }
 }

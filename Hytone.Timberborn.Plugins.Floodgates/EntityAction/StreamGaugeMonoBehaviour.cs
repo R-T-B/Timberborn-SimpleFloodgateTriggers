@@ -5,6 +5,7 @@ using Timberborn.ConstructibleSystem;
 using Timberborn.EntitySystem;
 using Timberborn.TickSystem;
 using Timberborn.WaterBuildings;
+using UnityEngine;
 
 namespace Hytone.Timberborn.Plugins.Floodgates.EntityAction
 {
@@ -12,14 +13,16 @@ namespace Hytone.Timberborn.Plugins.Floodgates.EntityAction
     /// Custom behaviour we want to add for StreamGauges
     /// </summary>
     public class StreamGaugeMonoBehaviour : TickableComponent, IRegisteredComponent, IFinishedStateListener
-	{
+    {
         private List<StreamGaugeFloodgateLink> _floodgateLinks = new List<StreamGaugeFloodgateLink>();
         public ReadOnlyCollection<StreamGaugeFloodgateLink> FloodgateLinks { get; private set; }
 
         private EntityComponentRegistry _entityComponentRegistry;
 
         private StreamGauge _streamGauge;
-		
+
+        private FloodgateEntityActionConfigurator _FGEAC;
+
         [Inject]
         public void InjectDependencies(
             EntityComponentRegistry entityComponentRegistry)
@@ -42,15 +45,15 @@ namespace Hytone.Timberborn.Plugins.Floodgates.EntityAction
 
         public void DetachFloodgate(StreamGaugeFloodgateLink link)
         {
-			_floodgateLinks.Remove(link);
-		}
+            _floodgateLinks.Remove(link);
+        }
 
-		private void DetachAllFloodgates()
+        private void DetachAllFloodgates()
         {
-			for (int i = _floodgateLinks.Count - 1; i >= 0; i--)
+            for (int i = _floodgateLinks.Count - 1; i >= 0; i--)
             {
-				var link = _floodgateLinks[i];
-				link.Floodgate.DetachLink(link);
+                var link = _floodgateLinks[i];
+                link.Floodgate.DetachLink(link);
             }
         }
 
@@ -76,7 +79,7 @@ namespace Hytone.Timberborn.Plugins.Floodgates.EntityAction
         public override void Tick()
         {
             var currHeight = _streamGauge.WaterLevel;
-            foreach(var link in FloodgateLinks)
+            foreach (var link in FloodgateLinks)
             {
                 if (currHeight <= link.Threshold1)
                 {
