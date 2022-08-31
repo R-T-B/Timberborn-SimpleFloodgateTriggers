@@ -1,10 +1,10 @@
 {
-  "name": "SimpleFloodgateTriggers",
-  "version_number": "1.0.3",
+  "name": "SimpleFloodgateTriggersExperimental",
+  "version_number": "1.0.3.1",
   "website_url": "https://github.com/hytonhan/Timberborn-SimpleFloodgateTriggers",
   "description": "Automated Floodgates on basic events",
   "dependencies": [
     "BepInEx-BepInExPack_Timberborn-5.4.19",
-    "Timberborn_Central-TimberAPI-0.3.0"
+    "Timberborn_Central-TimberAPI-0.4.4"
   ]
 }

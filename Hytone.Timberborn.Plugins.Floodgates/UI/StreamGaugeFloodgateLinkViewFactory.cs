@@ -94,7 +94,7 @@ namespace Hytone.Timberborn.Plugins.Floodgates.UI
                                                 .AddPreset(
                                                     factory => factory.Sliders()
                                                                       .SliderCircle(0f,
-                                                                                    3f,
+                                                                                    10f,
                                                                                     name: $"Threshold1Slider{index}",
                                                                    builder: sliderBuilder => sliderBuilder.SetStyle(style => style.flexGrow = 1f)
                                                                                                           .SetPadding(new Padding(new Length(21, LengthUnit.Pixel), 0))))
@@ -108,7 +108,7 @@ namespace Hytone.Timberborn.Plugins.Floodgates.UI
                                                 .AddPreset(
                                                     factory => factory.Sliders()
                                                                       .SliderCircle(0f,
-                                                                                    3f,
+                                                                                    10f,
                                                                                     name: $"Threshold1FloodgateHeightSlider{index}",
                                                                    builder: sliderBuilder => sliderBuilder.SetStyle(style => style.flexGrow = 1f)
                                                                                                           .SetPadding(new Padding(new Length(21, LengthUnit.Pixel), 0))))
@@ -122,7 +122,7 @@ namespace Hytone.Timberborn.Plugins.Floodgates.UI
                                                 .AddPreset(
                                                     factory => factory.Sliders()
                                                                       .SliderCircle(0f,
-                                                                                    3f,
+                                                                                    10f,
                                                                                     name: $"Threshold2Slider{index}",
                                                                    builder: sliderBuilder => sliderBuilder.SetStyle(style => style.flexGrow = 1f)
                                                                                                           .SetPadding(new Padding(new Length(21, LengthUnit.Pixel), 0))))
@@ -136,7 +136,7 @@ namespace Hytone.Timberborn.Plugins.Floodgates.UI
                                                 .AddPreset(
                                                     factory => factory.Sliders()
                                                                       .SliderCircle(0f,
-                                                                                    3f,
+                                                                                    10f,
                                                                                     name: $"Threshold2FloodgateHeightSlider{index}",
                                                                    builder: sliderBuilder => sliderBuilder.SetStyle(style => style.flexGrow = 1f)
                                                                                                           .SetPadding(new Padding(new Length(21, LengthUnit.Pixel), 0))))
